@@ -15,11 +15,11 @@ https://future-architect.github.io/articles/20220428a/
 aws s3 cp s3://awsglue-datasets/examples/us-legislators/all/persons.json .
 ```
 
-コンテナ側
+glueコンテナ側
 ```bash
 finch exec -it glue.dev bash
-aws s3 mb s3://awsglue-datasets --endpoint-url http://glue.dev.s3.local:4566
+aws s3 mb s3://awsglue-datasets --endpoint-url http://localhost:4566
 cd jupyter_workspace/
-aws s3 cp persons.json s3://awsglue-datasets/examples/us-legislators/all/ --endpoint-url http://glue.dev.s3.local:4566
+aws s3 cp persons.json s3://awsglue-datasets/examples/us-legislators/all/ --endpoint-url http://localhost:4566
 pytest tests/
 ```
