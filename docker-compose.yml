@@ -2,7 +2,7 @@ version: '3.5'
 services:
   glue.dev.s3.local:
     container_name: s3.dev
-    image: localstack/localstack:2.3.2
+    image: localstack/localstack:3.0.2
     environment:
       - SERVICES=s3
       # dummy configure
