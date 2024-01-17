@@ -2,7 +2,7 @@ version: '3.5'
 services:
   glue.dev.s3.local:
     container_name: s3.dev
-    image: localstack/localstack:3.0.2
+    image: localstack/localstack:0.12.8
     environment:
       - SERVICES=s3
       # dummy configure
@@ -12,7 +12,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=test
     ports:
       - 4566:4566
-    network_mode: host
+    networks:
+      - glue.dev.network
   glue.dev.summary:
     container_name: glue.dev
     image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
@@ -35,5 +36,9 @@ services:
       - 8888:8888
       # spark uiのポート
       - 4040:4040
-    network_mode: host
     command: /home/glue_user/jupyter/jupyter_start.sh
+    networks:
+      - glue.dev.network
+networks:
+ glue.dev.network:
+   name: glue.dev.network

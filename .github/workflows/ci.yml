@@ -26,4 +26,4 @@ jobs:
           docker-compose up -d
       - name: test
         run: |
-          bash run_tests.sh
+          bash run_test.sh

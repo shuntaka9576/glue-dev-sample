@@ -14,7 +14,7 @@ def glue_context():
 
     args = getResolvedOptions(sys.argv, ['JOB_NAME'])
     sc = SparkSession.builder.getOrCreate()
-    sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://localhost:4566")
+    sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://glue.dev.s3.local:4566")
     sc._jsc.hadoopConfiguration().set("fs.s3a.path.style.access", "true")
     sc._jsc.hadoopConfiguration().set("fs.s3a.signing-algorithm", "S3SignerType")
     sc._jsc.hadoopConfiguration().set("fs.s3a.change.detection.mode", "None")
