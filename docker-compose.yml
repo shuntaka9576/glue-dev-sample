@@ -15,6 +15,10 @@ services:
   glue.dev.summary:
     container_name: glue.dev
     image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
+    ulimits:
+     nofile:
+      soft: 12288
+      hard: 12288
     volumes:
       - ./:/home/glue_user/workspace/jupyter_workspace
       - ./spark.conf:/home/glue_user/spark/conf/spark-defaults.conf
