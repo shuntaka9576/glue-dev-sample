@@ -18,6 +18,7 @@ services:
     volumes:
       - ./:/home/glue_user/workspace/jupyter_workspace
       - ./spark.conf:/home/glue_user/spark/conf/spark-defaults.conf
+      - ./etc/security/limits.conf:/etc/security/limits.conf
     environment:
       - DISABLE_SSL=true
       # dummy configure
