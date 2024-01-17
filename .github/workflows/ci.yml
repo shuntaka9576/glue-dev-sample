@@ -13,11 +13,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
-      - name: Cache Docker Registry
-        uses: actions/cache@v3
-        with:
-          path: /tmp/docker-registry
-          key: docker-registry-${{ hashFiles('docker-compose.yml') }}
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - run: docker-compose up --build
       - name: prepare container
         run: |
           docker-compose up -d
