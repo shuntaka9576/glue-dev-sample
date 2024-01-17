@@ -6,6 +6,9 @@ permissions:
   id-token: write
   contents: read
   actions: read
+env:
+ GLUE_LIB_CACHE_PATH: localstack-image
+ GLUE_LIB_VERSION: 4.0.0
 
 jobs:
   test:
@@ -13,6 +16,21 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
+
+      - name: Cache a GlueLib Docker image
+        id: cache-localstack
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.GLUE_LIB_CACHE_PATH }}
+          key: ${{ runner.os }}-localstack-${{ env.GLUE_LIB_VERSION }}
+
+      - name: Pull and save a GlueLib Docker image
+        if: steps.cache-localstack.outputs.cache-hit != 'true'
+        run: |
+          docker pull amazon/aws-glue-libs:glue_libs_${GLUE_LIB_VERSION}_image_01
+          docker save amazon/aws-glue-libs:glue_libs_${GLUE_LIB_VERSION}_image_01 -o ${GLUE_LIB_CACHE_PATH}
+
+      - run: docker load -i ${GLUE_LIB_CACHE_PATH}
       - name: lunch container
         run: |
           docker-compose up -d
