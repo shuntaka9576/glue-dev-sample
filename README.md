@@ -14,8 +14,8 @@ https://future-architect.github.io/articles/20220428a/
 glueコンテナ側
 ```bash
 finch exec -it glue.dev bash
-aws s3 mb s3://awsglue-datasets --endpoint-url http://localhost:4566
+aws s3 mb s3://awsglue-datasets --endpoint-url http://s3.dev:4566
 cd jupyter_workspace/
-aws s3 cp persons.json s3://awsglue-datasets/examples/us-legislators/all/ --endpoint-url http://localhost:4566
+aws s3 cp persons.json s3://awsglue-datasets/examples/us-legislators/all/ --endpoint-url http://s3.dev:4566
 pytest tests/
 ```

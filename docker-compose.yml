@@ -2,11 +2,11 @@ version: '3.5'
 services:
   glue.dev.s3.local:
     container_name: s3.dev
-    image: localstack/localstack:0.12.8
+    image: localstack/localstack:3.0.2
     environment:
       - SERVICES=s3
       # dummy configure
-      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_REGION=ap-northeast-1
       - AWS_DEFAULT_OUTPUT=json
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
