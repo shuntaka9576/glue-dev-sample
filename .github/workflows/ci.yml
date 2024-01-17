@@ -13,10 +13,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
-      - run: docker-compose up --build
-      - name: prepare container
+      - name: lunch container
         run: |
           docker-compose up -d
       - name: test
