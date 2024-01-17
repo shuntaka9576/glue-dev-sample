@@ -11,10 +11,6 @@ https://future-architect.github.io/articles/20220428a/
 
 ## メモ
 
-```bash
-aws s3 cp s3://awsglue-datasets/examples/us-legislators/all/persons.json .
-```
-
 glueコンテナ側
 ```bash
 finch exec -it glue.dev bash

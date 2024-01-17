@@ -13,8 +13,6 @@ services:
     ports:
       - 4566:4566
     network_mode: host
-    # networks:
-    #   - glue.dev.network
   glue.dev.summary:
     container_name: glue.dev
     image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
@@ -38,9 +36,4 @@ services:
       # spark uiのポート
       - 4040:4040
     network_mode: host
-     # networks:
-     #   - glue.dev.network
     command: /home/glue_user/jupyter/jupyter_start.sh
-# networks:
-#   glue.dev.network:
-#     name: glue.dev.network
